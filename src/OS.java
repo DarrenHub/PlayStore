@@ -7,4 +7,12 @@ public class OS {
 		this.type = type;
 		this.version = version;
 	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public int getVersion() {
+		return this.version;
+	}
 }

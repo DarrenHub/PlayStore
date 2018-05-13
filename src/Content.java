@@ -27,7 +27,7 @@ public abstract class Content {
 		return price;
 	}
 
-	public int getNumDownloads() {
-		return numDownloads;
+	public void incrementNumDownloads() {
+		this.numDownloads++;
 	}
 }
