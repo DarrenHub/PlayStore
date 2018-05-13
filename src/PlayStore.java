@@ -4,12 +4,30 @@ import java.util.ArrayList;
 public class PlayStore {
 	private HashMap<String, Content> allContents;
 	private ArrayList<User> allUsers;
-	
+
 	public PlayStore() {
 		this.allContents = new HashMap<String, Content>();
 		this.allUsers = new ArrayList<User>();
 	}
-	
+
+	public void addContents(Content item) {
+		this.allContents.put(item.getId(), item);
+		String contentType = item.getClass().getName();
+		String contentName = item.getName();
+		if (item instanceof Game) {
+			String osType = ((Game) item).getOsReq().getType();
+			System.out.println(
+					contentType + " " + contentName + " for " + osType + " has been added to the PlayStore.\n");
+		} else {
+			System.out.println(contentType + " " + contentName + " has been added to the PlayStore.\n");
+		}
+	}
+
+	public void addUsers(User user) {
+		this.allUsers.add(user);
+		System.out.println(user.getName() + " has joined.\n");
+	}
+
 	public static void main(String[] args) {
 		PlayStore admin = new PlayStore();
 		// adding new readings
@@ -70,8 +88,7 @@ public class PlayStore {
 		// showing all reading type of objects with the genre “Novel”
 		admin.showReadingOfGenre("Novel");
 
-		// Student to do: call a method to show all games. What should be the parameters
-		// of that //method? See Section 2, functionality 7
+		admin.showAllContents("Game");
 
 		Comment cmnt = new Comment(u1, "This is a fantastic game!");
 		g1.addReviews(cmnt);
