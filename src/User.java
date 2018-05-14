@@ -7,7 +7,6 @@ public class User {
 	private double balance; // User account balance
 	private OS os; // Operating System of the user
 	private boolean isPremium; // Whether the user is a premium user
-
 	private ArrayList<Content> contentsBought; // List of names of all contents bought
 
 	public User(String id, String name, String phone, double balance, OS os) {
@@ -56,6 +55,7 @@ public class User {
 		try {
 			this.spendMoney(100);
 			this.isPremium = true;
+
 			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has become a premium user!\n");
 		} catch (UserBalanceException ube) {
 			System.err.println(this.name + " (" + this.id + ")"
@@ -67,6 +67,7 @@ public class User {
 	public void buyContent(Content item) {
 		// If the user is premium user, set the discount to 0.8 (20% off)
 		double discount = 1; // default discount is 1 (no discount)
+
 		if (this.isPremium) {
 			discount = 0.8;
 		}
@@ -84,10 +85,12 @@ public class User {
 		}
 
 		double cost = item.getPrice() * discount; // Set the final cost of the content
+
 		try {
 			this.spendMoney(cost);
 			this.contentsBought.add(item); // Add the content to the user's content list
 			item.incrementNumDownloads(); // Increment the number of downloads of the content
+
 			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has successfully purchased "
 					+ item.getName() + "!\n");
 		} catch (UserBalanceException ube) {
@@ -99,9 +102,11 @@ public class User {
 
 	public void showContentsBought() {
 		System.out.println(this.name + " (" + this.id + ")" + " has purchased the following items:");
+
 		for (int i = 0; i < this.contentsBought.size(); i++) {
 			System.out.println(this.contentsBought.get(i).getName());
 		}
+
 		System.out.println("--End of the list--\n");
 	}
 

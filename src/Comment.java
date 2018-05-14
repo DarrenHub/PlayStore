@@ -31,9 +31,11 @@ public class Comment {
 		 * both replying the same comment, the two replies will indent the same.
 		 */
 		int replySize = this.reply.size();
+
 		// Check if this comment has any reply.
 		if (replySize > 0) {
 			int numIndentation = 1; // Default indentation size.
+
 			// Iterate through all the replies and print them all with the same indentation,
 			// as they are on the same level.
 			for (int i = 0; i < replySize; i++) {
@@ -41,6 +43,7 @@ public class Comment {
 				for (int j = 0; j < numIndentation; j++) {
 					System.out.print("\t");
 				}
+
 				Comment rep = this.reply.get(i);
 				rep.printComment();
 				/*
@@ -58,11 +61,13 @@ public class Comment {
 		 * The argument indicates the number of tabs for initial indentation.
 		 */
 		int replySize = this.reply.size();
+
 		if (replySize > 0) {
 			for (int i = 0; i < replySize; i++) {
 				for (int j = 0; j < numIndentation; j++) {
 					System.out.print("\t");
 				}
+
 				Comment rep = this.reply.get(i);
 				rep.printComment();
 				rep.printReplies(numIndentation + 1);

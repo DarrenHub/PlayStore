@@ -41,7 +41,9 @@ public abstract class Content {
 			System.out.println("No review yet.");
 			return;
 		}
+
 		System.out.println("The review(s) for " + this.name + " are:\n");
+
 		for (int i = 0; i < this.review.size(); i++) {
 			Comment rev = this.review.get(i);
 			this.printReview(rev);
