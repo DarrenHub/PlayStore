@@ -32,6 +32,24 @@ public abstract class Content {
 	}
 
 	public void incrementNumDownloads() {
+		// A method to increment the number of downloads when called
 		this.numDownloads++;
+	}
+
+	public void printAllReview() {
+		if (this.review.size() == 0) {
+			System.out.println("No review yet.");
+			return;
+		}
+		System.out.println("The review(s) for " + this.name + " are:\n");
+		for (int i = 0; i < this.review.size(); i++) {
+			Comment rev = this.review.get(i);
+			this.printReview(rev);
+		}
+	}
+
+	private void printReview(Comment review) {
+		review.printComment();
+		review.printReplies();
 	}
 }
