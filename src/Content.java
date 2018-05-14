@@ -15,6 +15,10 @@ public abstract class Content {
 		this.review = new ArrayList<Comment>();
 	}
 
+	public void addReviews(Comment cmt) {
+		this.review.add(cmt);
+	}
+
 	public String getId() {
 		return id;
 	}
