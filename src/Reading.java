@@ -17,4 +17,8 @@ public abstract class Reading extends Content {
 		this.genre = genre;
 		this.numPages = numPages;
 	}
+	
+	public String getGenre() {
+		return this.genre;
+	}
 }

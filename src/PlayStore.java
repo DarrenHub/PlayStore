@@ -46,12 +46,38 @@ public class PlayStore {
 		// Print out all contents that belong to the type, e.g. Game, Book.
 		System.out.println("The PlayStore currently has the following " + type + "s:\n");
 		for (Map.Entry<String, Content> entry : this.allContents.entrySet()) {
-			String id = entry.getKey();
 			Content item = entry.getValue();
 			String contentType = item.getClass().getName().toLowerCase();
-			String contentName = item.getName();
+
 			if (contentType.equals(type.toLowerCase())) {
-				System.out.println("ID: " + id + "\nName: " + contentName + "\n");
+				String id = entry.getKey();
+				String contentName = item.getName();
+
+				if (contentType.equals("game")) {
+					String os = ((Game) item).getOsReq().getType();
+					System.out.println("ID: " + id + "\nName: " + contentName + " for " + os + "\n");
+				} else {
+					System.out.println("ID: " + id + "\nName: " + contentName + "\n");
+				}
+			}
+		}
+		System.out.println("--End of the list--\n");
+	}
+
+	public void showReadingOfGenre(String genre) {
+		// Print out all readings that belong to the genre, e.g. Novel
+		System.out.println("The PlayStore currently has the following items for " + genre + ":\n");
+		for (Map.Entry<String, Content> entry : this.allContents.entrySet()) {
+			Content item = entry.getValue();
+
+			if (item instanceof Reading) {
+				String contentGenre = ((Reading) item).getGenre().toLowerCase();
+				if (contentGenre.equals(genre.toLowerCase())) {
+					String id = entry.getKey();
+					String contentType = item.getClass().getName();
+					String contentName = item.getName();
+					System.out.println("ID: " + id + "\nType: " + contentType + "\nName: " + contentName + "\n");
+				}
 			}
 		}
 		System.out.println("--End of the list--\n");
