@@ -58,7 +58,8 @@ public class User {
 			this.isPremium = true;
 			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has become a premium user!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println(this.name + " (" + this.id + ")" + " failed to upgrade to premium account due to the following error:");
+			System.err.println(this.name + " (" + this.id + ")"
+					+ " failed to upgrade to premium account due to the following error:");
 			System.err.println(ube.getReason());
 		}
 	}
@@ -75,7 +76,8 @@ public class User {
 			try {
 				this.checkCompatibility((Game) item);
 			} catch (IncompatibleOsException ioe) {
-				System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName() + " due to the following error:");
+				System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
+						+ " due to the following error:");
 				System.err.println(ioe.getReason() + "\n");
 				return;
 			}
@@ -86,9 +88,11 @@ public class User {
 			this.spendMoney(cost);
 			this.contentsBought.add(item); // Add the content to the user's content list
 			item.incrementNumDownloads(); // Increment the number of downloads of the content
-			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has successfully purchased " + item.getName() + "!\n");
+			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has successfully purchased "
+					+ item.getName() + "!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName() + " due to the following error:");
+			System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
+					+ " due to the following error:");
 			System.err.println(ube.getReason() + "\n");
 		}
 	}
@@ -108,11 +112,13 @@ public class User {
 		int userOSVer = this.os.getVersion(); // Get the OS version of the user
 		int requiredOSVer = g.getOsReq().getVersion(); // Get the required OS version of the user
 
+		// Check if the OS's match
 		if (!userOS.equals(requiredOS)) {
 			throw new IncompatibleOsException(
 					"Mismatched Operating System: \nRequired: " + requiredOS + "\nCurrent: " + userOS + "\n");
 		}
 
+		// Check if the OS version meets the minimum requirement
 		if (userOSVer < requiredOSVer) {
 			throw new IncompatibleOsException(
 					"OS version too low: \nMinimum Required: " + requiredOSVer + "\nCurrent: " + userOSVer + "\n");

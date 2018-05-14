@@ -9,7 +9,8 @@ public class Magazine extends Reading {
 	}
 
 	public Magazine(String id, String name, String publisher, String genre, int numPages, String titleMain) {
-		super(id, name, publisher, genre, numPages);
+		super(id, name, publisher, genre, numPages); // Default price to 0 (free) when price is not passed as an
+														// argument
 		this.titleMain = titleMain;
 	}
 }
