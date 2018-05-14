@@ -108,7 +108,7 @@ public class User {
 		int userOSVer = this.os.getVersion(); // Get the OS version of the user
 		int requiredOSVer = g.getOsReq().getVersion(); // Get the required OS version of the user
 
-		if (userOS.compareTo(requiredOS) != 0) {
+		if (!userOS.equals(requiredOS)) {
 			throw new IncompatibleOsException(
 					"Mismatched Operating System: \nRequired: " + requiredOS + "\nCurrent: " + userOS + "\n");
 		}

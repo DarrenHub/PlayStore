@@ -50,7 +50,7 @@ public class PlayStore {
 			Content item = entry.getValue();
 			String contentType = item.getClass().getName().toLowerCase();
 			String contentName = item.getName();
-			if (contentType.compareTo(type.toLowerCase()) == 0) {
+			if (contentType.equals(type.toLowerCase())) {
 				System.out.println("ID: " + id + "\nName: " + contentName + "\n");
 			}
 		}
