@@ -8,7 +8,7 @@ public class User {
 	private OS os; // Operating System of the user
 	private boolean isPremium; // Whether the user is a premium user
 
-	private ArrayList<String> contentsBought; // List of names of all contents bought
+	private ArrayList<Content> contentsBought; // List of names of all contents bought
 
 	public User(String id, String name, String phone, double balance, OS os) {
 		this.id = id;
@@ -17,7 +17,7 @@ public class User {
 		this.balance = balance;
 		this.os = os;
 		this.isPremium = false;
-		this.contentsBought = new ArrayList<String>();
+		this.contentsBought = new ArrayList<Content>();
 	}
 
 	public User(String id, String name, String phone, OS os) {
@@ -27,7 +27,7 @@ public class User {
 		this.balance = 0; // Default balance to 0 when balance is not passed as an argument
 		this.os = os;
 		this.isPremium = false;
-		this.contentsBought = new ArrayList<String>();
+		this.contentsBought = new ArrayList<Content>();
 	}
 
 	public String getId() {
@@ -85,7 +85,7 @@ public class User {
 		double cost = item.getPrice() * discount; // Set the final cost of the content
 		try {
 			this.spendMoney(cost);
-			this.contentsBought.add(item.getName()); // Add the content to the user's content list
+			this.contentsBought.add(item); // Add the content to the user's content list
 			item.incrementNumDownloads(); // Increment the number of downloads of the content
 			System.out.println("Congrats! " + this.name + " has successfully purchased " + item.getName());
 		} catch (UserBalanceException ube) {
@@ -97,7 +97,7 @@ public class User {
 	public void showContentsBought() {
 		System.out.println(this.name + " has purchased the following items:\n");
 		for (int i = 0; i < this.contentsBought.size(); i++) {
-			System.out.println(this.contentsBought.get(i));
+			System.out.println(this.contentsBought.get(i).getName());
 		}
 		System.out.println("End of the list.\n");
 	}
