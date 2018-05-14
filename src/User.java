@@ -56,11 +56,10 @@ public class User {
 		try {
 			this.spendMoney(100);
 			this.isPremium = true;
+			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has become a premium user!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println("Error: " + ube.getReason());
-			System.err.println("\nPremium account upgrade failed.\n");
-		} finally {
-			System.out.println("Premium User Status: " + this.isPremium + "\n");
+			System.err.println(this.name + " (" + this.id + ")" + " failed to upgrade to premium account due to the following error:");
+			System.err.println(ube.getReason());
 		}
 	}
 
@@ -76,8 +75,8 @@ public class User {
 			try {
 				this.checkCompatibility((Game) item);
 			} catch (IncompatibleOsException ioe) {
-				System.err.println("Error: " + ioe.getReason());
-				System.err.println("\nFailed to buy " + item.getName() + "\n");
+				System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName() + " due to the following error:");
+				System.err.println(ioe.getReason() + "\n");
 				return;
 			}
 		}
@@ -87,19 +86,19 @@ public class User {
 			this.spendMoney(cost);
 			this.contentsBought.add(item); // Add the content to the user's content list
 			item.incrementNumDownloads(); // Increment the number of downloads of the content
-			System.out.println("Congrats! " + this.name + " has successfully purchased " + item.getName());
+			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has successfully purchased " + item.getName() + "!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println("Error: " + ube.getReason());
-			System.err.println("\nFailed to buy " + item.getName() + "\n");
+			System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName() + " due to the following error:");
+			System.err.println(ube.getReason() + "\n");
 		}
 	}
 
 	public void showContentsBought() {
-		System.out.println(this.name + " has purchased the following items:\n");
+		System.out.println(this.name + " (" + this.id + ")" + " has purchased the following items:");
 		for (int i = 0; i < this.contentsBought.size(); i++) {
 			System.out.println(this.contentsBought.get(i).getName());
 		}
-		System.out.println("End of the list.\n");
+		System.out.println("--End of the list--\n");
 	}
 
 	private void checkCompatibility(Game g) throws IncompatibleOsException {
@@ -116,7 +115,7 @@ public class User {
 
 		if (userOSVer < requiredOSVer) {
 			throw new IncompatibleOsException(
-					"OS version too low: \nMinimum Required: " + requiredOSVer + "\nCurrent" + userOSVer + "\n");
+					"OS version too low: \nMinimum Required: " + requiredOSVer + "\nCurrent: " + userOSVer + "\n");
 		}
 	}
 
