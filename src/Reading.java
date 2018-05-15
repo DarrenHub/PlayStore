@@ -11,13 +11,6 @@ public abstract class Reading extends Content {
 		this.numPages = numPages;
 	}
 
-	public Reading(String id, String name, String publisher, String genre, int numPages) {
-		super(id, name, 0); // Default price to 0 (free) when price is not passed as an argument
-		this.publisher = publisher;
-		this.genre = genre;
-		this.numPages = numPages;
-	}
-
 	public String getGenre() {
 		return this.genre;
 	}
