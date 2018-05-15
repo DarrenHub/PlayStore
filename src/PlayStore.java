@@ -100,10 +100,12 @@ public class PlayStore {
 		String[] authors3 = { "Thomas H. Cormen", "Charles E. Leiserson", "Ronald L. Rivest", "Clifford Stein" };
 		Book b3 = new Book("R3", "Introduction to algorithms", 100, "MIT Press", "Computer Science", 1312, authors3);
 		Magazine m1 = new Magazine("R4", "Forbes", 8, "Forbes Media‎", "Business", 50, "World’s richest under 30");
+		Book b4 = new Book("R4", "The Grand Design", "Charles Scribner's Sons", "Novel", 180, authors2);
 
 		admin.addContents(b1);
 		admin.addContents(b2);
 		admin.addContents(b3);
+		admin.addContents(b4);
 		admin.addContents(m1);
 
 		// adding new games
