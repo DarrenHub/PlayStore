@@ -5,7 +5,7 @@ public abstract class Content {
 	private String name; // Content name
 	private double price; // Content price
 	private int numDownloads; // Number of downloads
-	private ArrayList<Comment> review;
+	private ArrayList<Comment> review; // List of reviews for this content
 
 	public Content(String id, String name, double price) {
 		this.id = id;
@@ -20,15 +20,19 @@ public abstract class Content {
 	}
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public double getPrice() {
-		return price;
+		return this.price;
+	}
+
+	public int getNumDownloads() {
+		return this.numDownloads;
 	}
 
 	public void incrementNumDownloads() {

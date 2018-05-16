@@ -13,4 +13,8 @@ public class Magazine extends Reading {
 														// argument
 		this.titleMain = titleMain;
 	}
+
+	public String getTitleMain() {
+		return this.titleMain;
+	}
 }

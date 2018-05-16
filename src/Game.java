@@ -15,6 +15,10 @@ public class Game extends Content {
 		this.osReq = osReq;
 	}
 
+	public boolean getIsMultiPlayer() {
+		return this.isMultiPlayer;
+	}
+
 	public OS getOsReq() {
 		return this.osReq;
 	}

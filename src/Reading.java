@@ -11,7 +11,15 @@ public abstract class Reading extends Content {
 		this.numPages = numPages;
 	}
 
+	public String getPublisher() {
+		return this.publisher;
+	}
+
 	public String getGenre() {
 		return this.genre;
+	}
+
+	public int getNumPages() {
+		return this.numPages;
 	}
 }
