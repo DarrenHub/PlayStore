@@ -56,7 +56,7 @@ public class PlayStore {
 				String id = entry.getKey();
 				String contentName = item.getName();
 
-				if (contentType.equals("game")) {
+				if (item instanceof Game) {
 					String os = ((Game) item).getOsReq().getType();
 					System.out.println("ID: " + id + "\nName: " + contentName + " for " + os + "\n");
 				} else {
