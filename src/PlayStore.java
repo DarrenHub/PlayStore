@@ -12,9 +12,10 @@ public class PlayStore {
 
 	public void addContents(Content item) {
 		this.allContents.put(item.getId(), item);
-		String contentType = item.getClass().getName();
+		String contentType = item.getClass().getName(); // Get the class name
 		String contentName = item.getName();
 
+		// If the content is a game, also print out the OS
 		if (item instanceof Game) {
 			String osType = ((Game) item).getOsReq().getType();
 			System.out.println(
@@ -36,7 +37,7 @@ public class PlayStore {
 		for (Map.Entry<String, Content> entry : this.allContents.entrySet()) {
 			String id = entry.getKey();
 			Content item = entry.getValue();
-			String contentType = item.getClass().getName();
+			String contentType = item.getClass().getName(); // Get the class name
 			String contentName = item.getName();
 			System.out.println("ID: " + id + "\nType: " + contentType + "\nName: " + contentName + "\n");
 		}
@@ -50,9 +51,12 @@ public class PlayStore {
 
 		for (Map.Entry<String, Content> entry : this.allContents.entrySet()) {
 			Content item = entry.getValue();
+
+			// Get the class name and make it case insensitive to dynamically compare
+			// instance type
 			String contentType = item.getClass().getName().toLowerCase();
 
-			if (contentType.equals(type.toLowerCase())) {
+			if (contentType.equals(type.toLowerCase())) { // Compare if the content type matches the wanted type
 				String id = entry.getKey();
 				String contentName = item.getName();
 
