@@ -44,7 +44,7 @@ public class User {
 	public void becomePremium() {
 		// Check if the user is already a premium user.
 		if (this.isPremium) {
-			System.err.println("This user is already a premium user.");
+			System.out.println("This user is already a premium user.");
 			return;
 		}
 
@@ -58,9 +58,9 @@ public class User {
 
 			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has become a premium user!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println(this.name + " (" + this.id + ")"
+			System.out.println(this.name + " (" + this.id + ")"
 					+ " failed to upgrade to premium account due to the following error:");
-			System.err.println(ube.getReason());
+			System.out.println(ube.getReason());
 		}
 	}
 
@@ -77,9 +77,9 @@ public class User {
 			try {
 				this.checkCompatibility((Game) item);
 			} catch (IncompatibleOsException ioe) {
-				System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
+				System.out.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
 						+ " due to the following error:");
-				System.err.println(ioe.getReason() + "\n");
+				System.out.println(ioe.getReason() + "\n");
 				return;
 			}
 		}
@@ -94,9 +94,9 @@ public class User {
 			System.out.println("Congrats! " + this.name + " (" + this.id + ")" + " has successfully purchased "
 					+ item.getName() + "!\n");
 		} catch (UserBalanceException ube) {
-			System.err.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
+			System.out.println(this.name + " (" + this.id + ")" + " failed to buy " + item.getName()
 					+ " due to the following error:");
-			System.err.println(ube.getReason() + "\n");
+			System.out.println(ube.getReason() + "\n");
 		}
 	}
 
