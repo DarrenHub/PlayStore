@@ -1,14 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
 public class PlayStore {
 	private HashMap<String, Content> allContents;
-	private ArrayList<User> allUsers;
+	private HashMap<String, User> allUsers;
 
 	public PlayStore() {
 		this.allContents = new HashMap<String, Content>();
-		this.allUsers = new ArrayList<User>();
+		this.allUsers = new HashMap<String, User>();
 	}
 
 	public void addContents(Content item) {
@@ -26,7 +25,7 @@ public class PlayStore {
 	}
 
 	public void addUsers(User user) {
-		this.allUsers.add(user);
+		this.allUsers.put(user.getId(), user);
 		System.out.println(user.getName() + " has joined.\n");
 	}
 
