@@ -161,9 +161,6 @@ public class PlayStore {
 		Comment r2 = new Comment(u1, "Really??");
 		r1.addReply(r2);
 
-		Comment r3 = new Comment(u1, "HAHA!");
-		cmnt.addReply(r3);
-
 		Comment cmnt2 = new Comment(u3, "The game crashes frequently.");
 		g1.addReviews(cmnt2);
 
